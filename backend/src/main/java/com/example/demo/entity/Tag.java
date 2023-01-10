@@ -6,18 +6,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Place {
-
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
 
     private String name;
 
-    public Place() {
+    public Tag(String name) {
+        this.name = name;
     }
 
-    public Place(Long id, String name) {
+    public Tag(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -30,7 +30,6 @@ public class Place {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
@@ -38,6 +37,5 @@ public class Place {
     public void setName(String name) {
         this.name = name;
     } 
-    
     
 }

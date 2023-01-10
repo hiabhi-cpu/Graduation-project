@@ -2,8 +2,8 @@ package com.example.demo.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.demo.entity.Area;
+import com.example.demo.entity.Tag;
 
-public interface AreaRepository extends CrudRepository<Area, Long>{
+public interface TagRepository extends CrudRepository<Tag, Long>{
     
 }
