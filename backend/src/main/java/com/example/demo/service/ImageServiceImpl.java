@@ -2,24 +2,27 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.entity.Place;
+import org.springframework.stereotype.Service;
 
-public class PlaceServiceImpl implements PlaceService {
+import com.example.demo.entity.Image;
+
+@Service
+public class ImageServiceImpl implements ImageService {
 
     @Override
-    public Place getPlace(Long id) {
+    public Image getImage(Long id) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public List<Place> getAllPlaces() {
+    public List<Image> getAllImages() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Place createNewPlace(Place place) {
+    public Image createNewImage(Image image) {
         // TODO Auto-generated method stub
         return null;
     }
