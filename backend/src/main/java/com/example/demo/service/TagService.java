@@ -7,6 +7,6 @@ import com.example.demo.entity.Tag;
 public interface TagService {
     Tag getTag(Long id);
     List<Tag> getAllTags();
-    Tag createNewTag(Tag tag);
+    Tag createNewTag(String name, String color);
 }
 
