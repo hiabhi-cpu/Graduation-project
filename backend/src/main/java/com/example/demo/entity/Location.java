@@ -27,6 +27,10 @@ public class Location {
     @Nonnull
     private Region region; 
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @Nonnull
+    private Tag tag; 
+
     public Location(Long id, String name) {
         this.id = id;
         this.name = name;
