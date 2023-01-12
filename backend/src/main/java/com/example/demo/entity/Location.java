@@ -38,6 +38,9 @@ public class Location {
     @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
     private Set<Image> images;
 
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    private Set<ScannedText> scannedTexts;
+
     public Location(Long id, String name) {
         this.id = id;
         this.name = name;
@@ -93,6 +96,17 @@ public class Location {
     }
 
     public void setImages(Image image) {
+    }
+
+    public Set<ScannedText> getScannedTexts() {
+        return scannedTexts;
+    }
+
+    public void setScannedTexts(Set<ScannedText> scannedTexts) {
+        this.scannedTexts = scannedTexts;
+    }
+
+    public void setScannedTexts(ScannedText scannedText) {
     }
 
 }

@@ -40,6 +40,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public Image createNewImage(String text, String source, Long id, MultipartFile file) {
+        if(locationRepository.findById(id).isPresent()) {
         Location location = locationRepository.findById(id).get();
         Image image = new Image();
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
@@ -57,5 +58,7 @@ public class ImageServiceImpl implements ImageService {
             location.setImages(image);
             locationRepository.save(location);
             return imageRepository.save(image);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }  
 }
