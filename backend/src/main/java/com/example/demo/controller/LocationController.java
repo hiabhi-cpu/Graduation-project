@@ -37,7 +37,7 @@ public class LocationController {
     }
 
      @PostMapping("/location")
-     public ResponseEntity<Location> saveLocation(@RequestParam("name") String name, @RequestParam("text") String text, @RequestParam("id") Long id) {
-        return new ResponseEntity<>(locationService.createNewLocation(name, text, id), HttpStatus.CREATED);
+     public ResponseEntity<Location> saveLocation(@RequestParam("name") String name, @RequestParam("text") String text, @RequestParam("id") Long id, @RequestParam("tagId") Long tagId) {
+        return new ResponseEntity<>(locationService.createNewLocation(name, text, id, tagId), HttpStatus.CREATED);
      }
 }

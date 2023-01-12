@@ -8,5 +8,5 @@ public interface LocationService {
     Location getLocation(Long id);
     List<Location> getAllLocations();
     List<Location> getAllLocationsBasedOnRegion(Long id);
-    Location createNewLocation(String name, String text, Long id);
+    Location createNewLocation(String name, String text, Long id, Long tagId);
 }

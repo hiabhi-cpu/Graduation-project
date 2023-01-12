@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.example.demo.entity.Location;
 import com.example.demo.repository.LocationRepository;
 import com.example.demo.repository.RegionRepository;
+import com.example.demo.repository.TagRepository;
 
 @Service
 public class LocationServiceImpl implements LocationService {
@@ -20,6 +21,9 @@ public class LocationServiceImpl implements LocationService {
 
     @Autowired
     RegionRepository regionRepository;
+
+    @Autowired
+    TagRepository tagRepository;
 
     @Override
     public Location getLocation(Long id) {
@@ -43,12 +47,14 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public Location createNewLocation(String name, String text, Long id) {
+    public Location createNewLocation(String name, String text, Long id, Long tagId) {
         if(regionRepository.findById(id).isPresent()) {
             Location location = new Location();
             location.setName(name);
             location.setText(text);
             location.setRegion(regionRepository.findById(id).get());
+            location.setTag(tagRepository.findById(tagId).get());
+
             return locationRepository.save(location);
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
