@@ -1,13 +1,17 @@
 package com.example.demo.entity;
 
-import jakarta.annotation.Nonnull;
+import java.util.Set;
 
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Location {
@@ -24,12 +28,15 @@ public class Location {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Nonnull
+    @JoinColumn(nullable = false)
     private Region region; 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Nonnull
+    @JoinColumn(nullable = false)
     private Tag tag; 
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    private Set<Image> images;
 
     public Location(Long id, String name) {
         this.id = id;
@@ -67,6 +74,25 @@ public class Location {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
+
+    public void setImages(Image image) {
     }
 
 }
