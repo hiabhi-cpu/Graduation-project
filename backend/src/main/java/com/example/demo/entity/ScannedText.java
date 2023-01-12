@@ -1,9 +1,14 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class ScannedText {
@@ -11,19 +16,32 @@ public class ScannedText {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
 
-    private String image;
+    @Lob
+	@Column(name = "image", columnDefinition="BLOB")
+    private String image; 
 
     private String text;
 
-    public ScannedText(String image, String text) {
-        this.image = image;
-        this.text = text;
+    private String source; 
+
+    @JsonIgnore
+    @ManyToOne
+    private Location location;
+
+    public ScannedText() {
     }
 
-    public ScannedText(Long id, String image, String text) {
+    public ScannedText(String image, String text, String source) {
+        this.image = image;
+        this.text = text;
+        this.source = source;
+    }
+
+    public ScannedText(Long id, String image, String text, String source) {
         this.id = id;
         this.image = image;
         this.text = text;
+        this.source = source;
     }
 
     public Long getId() {
@@ -50,4 +68,19 @@ public class ScannedText {
         this.text = text;
     } 
     
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
