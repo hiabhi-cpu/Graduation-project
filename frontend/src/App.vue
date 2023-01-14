@@ -1,14 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Hem</router-link> |
-    <router-link to="/Project">Projekt</router-link> |
-    <router-link to="/search">Sök</router-link> |
-    <router-link to="/about">Om oss</router-link> |
-    <router-link to="/contact">Kontakta oss</router-link> 
-
-  </nav>
-  <router-view/>
+  <navigation />
+  <div class="container">
+    <router-view/>
+  </div>
 </template>
+
+<script>
+
+import Navigation from './components/NavBar.vue'
+
+export default {
+  components: {
+    Navigation,
+  },
+};
+</script>
 
 <style>
 #app {
@@ -19,16 +25,8 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.container {
+  margin-top: 5rem;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
