@@ -2,11 +2,11 @@
     <div>
         <header class="header">
             <div class="header__logo">
-                <img class="logo" src="../assets/logotest.jpg"/>
+                <img class="logo" src="../assets/logoTest.png"/>
             </div>
                 <nav class="header__navigation">
                     <router-link class="header__navigation__link" to="/">Hem</router-link> 
-                    <router-link class="header__navigation__link" to="/Project">Projekt</router-link> 
+                    <router-link class="header__navigation__link" to="/project">Projekt</router-link> 
                     <router-link class="header__navigation__link" to="/search">Sök</router-link> 
                     <router-link class="header__navigation__link" to="/about">Om oss</router-link> 
                     <router-link class="header__navigation__link" to="/contact">Kontakta oss</router-link> 
@@ -20,7 +20,7 @@
 .header {
     margin-top: 2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     align-items: center;
     height: 3rem;
 }
@@ -33,11 +33,11 @@
 
 .header__logo {
     object-fit: contain;
+    margin-right: 5%;
 }
 
 .header__navigation {
     margin-top: 1.1rem;
-
 }
 
 .header__navigation__link {
