@@ -36,7 +36,7 @@
 
  .home__textContainer {
     text-align: left;
-    width: 60%;
+    width: 70%;
  }
 
 </style>
