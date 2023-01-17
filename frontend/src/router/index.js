@@ -3,7 +3,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
 import Search from '../views/Search.vue'
-import ProjectStart from '../views/Project/ProjectStart.vue'
+import ProjectStart from '../views/project/ProjectStart.vue'
+import SelectedRegion from '../views/project/SelectedRegion.vue'
 
 const routes = [
   {
@@ -30,6 +31,12 @@ const routes = [
     path: '/project',
     name: 'project',
     component: ProjectStart
+  },
+  {
+    path: '/project/:id',
+    name: 'SelectedRegion',
+    component: SelectedRegion,
+    props: true
   }
 ]
 
