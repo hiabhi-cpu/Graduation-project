@@ -2,7 +2,7 @@
     <div class="project">
       <h1>This is the first project page</h1>
       <div v-for="region in regions" :key="region.id" class="region">
-        <router-link :to="{ name: 'SelectedRegion', params: { id: region.id }}">
+        <router-link :to="{ name: 'SelectedRegion', params: { regionid: region.id }}">
           <h2>{{ region.name }}</h2>
         </router-link>
 

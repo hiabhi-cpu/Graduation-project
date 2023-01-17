@@ -5,6 +5,7 @@ import Contact from '../views/Contact.vue'
 import Search from '../views/Search.vue'
 import ProjectStart from '../views/project/ProjectStart.vue'
 import SelectedRegion from '../views/project/SelectedRegion.vue'
+import SelectedLocation from '../views/project/SelectedLocation.vue'
 
 const routes = [
   {
@@ -33,11 +34,18 @@ const routes = [
     component: ProjectStart
   },
   {
-    path: '/project/:id',
+    path: '/project/:regionid',
     name: 'SelectedRegion',
     component: SelectedRegion,
     props: true
+  },
+  {
+    path: '/project/:regionid/:locationid',
+    name: 'SelectedLocation',
+    component: SelectedLocation,
+    props: true
   }
+
 ]
 
 const router = createRouter({

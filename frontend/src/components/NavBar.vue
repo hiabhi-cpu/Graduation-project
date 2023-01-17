@@ -2,7 +2,7 @@
     <div>
         <header class="header">
             <div class="header__logo">
-                <img class="logo" src="../assets/logotest.jpg"/>
+                <img class="logo" src="../assets/loggoTest.jpg"/>
             </div>
                 <nav class="header__navigation">
                     <router-link class="header__navigation__link" to="/">Hem</router-link> 
