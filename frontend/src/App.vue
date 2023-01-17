@@ -26,7 +26,7 @@ export default {
 }
 
 .container {
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 </style>

@@ -2,14 +2,14 @@
     <div>
         <header class="header">
             <div class="header__logo">
-                <img class="logo" src="../assets/logoTest.png"/>
+                <img class="logo" src="../assets/logotest.jpg"/>
             </div>
                 <nav class="header__navigation">
                     <router-link class="header__navigation__link" to="/">Hem</router-link> 
                     <router-link class="header__navigation__link" to="/project">Projekt</router-link> 
                     <router-link class="header__navigation__link" to="/search">Sök</router-link> 
                     <router-link class="header__navigation__link" to="/about">Om oss</router-link> 
-                    <router-link class="header__navigation__link" to="/contact">Kontakta oss</router-link> 
+                    <router-link class="header__navigation__link" to="/contact">Kontakt</router-link> 
                 </nav>
         </header>
     </div>
