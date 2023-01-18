@@ -1,5 +1,6 @@
 <template>
     <div class="project">
+      <button class="backButton" @click="back">Tillbaka</button>
       <div class="project__region" v-if="region">
         <h2>{{ region.name }}</h2>
         <img v-bind:src="'data:image/gif;base64,'+ region.image" />
@@ -10,15 +11,21 @@
         <router-link class="project__locationLink" :to="{ name: 'SelectedLocation', params: { locationid: location.id }}">
           <h4 class="project__locationLink">{{ location.name }}  </h4>
         </router-link>
-        <span class="tag" :style="{'background-color':location.tag.color}">{{ location.tag.name }}</span> 
+        <Tag :style="{'background-color':location.tag.color}" :tagname="location.tag.name"></Tag> 
       </div>
     </div>
 
 </template>
 
 <script>
+  import Tag from '../../components/Tag.vue'
+
+
 export default {
   props: ['regionid'],
+  components: {
+    Tag,
+  },
   data() {
     return {
       region: null,
@@ -34,6 +41,11 @@ export default {
     .then(res => res.json())
     .then(data => this.locations = data)
     .then(err => console.log(err.message))
+  },
+  methods: {
+    back() {
+        this.$router.go(-1)
+    }
   }
 }
 </script>
@@ -41,14 +53,7 @@ export default {
 
 <style scoped>
 
-
-  .project {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-
+  
   .project__regionText {
     width: 40%;
   }
