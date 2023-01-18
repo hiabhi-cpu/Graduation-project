@@ -6,6 +6,7 @@ import Search from '../views/Search.vue'
 import ProjectStart from '../views/project/ProjectStart.vue'
 import SelectedRegion from '../views/project/SelectedRegion.vue'
 import SelectedLocation from '../views/project/SelectedLocation.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
@@ -44,6 +45,10 @@ const routes = [
     name: 'SelectedLocation',
     component: SelectedLocation,
     props: true
+  }, {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
   }
 
 ]
