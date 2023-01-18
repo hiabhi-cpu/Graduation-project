@@ -1,6 +1,6 @@
 <template>
     <div class="project">
-        <button class="backButton" @click="back">Tillbaka</button>
+        <BackButton>Tillbaka</BackButton>
         <div v-if="location" class="project__location">
         <h1> {{ location.name }}</h1>
         <p>{{ location.text }}</p>
@@ -29,11 +29,13 @@
 <script>
 
     import Tag from '../../components/Tag.vue'
+    import BackButton from '../../components/BackButton.vue'
 
 export default {
   props: ['regionid', 'locationid'],
   components: {
     Tag,
+    BackButton,
   },
   data() {
     return {
@@ -45,11 +47,6 @@ export default {
     .then(res => res.json())
     .then(data => this.location = data)
     .then(err => console.log(err.message))
-  },
-  methods: {
-    back() {
-        this.$router.go(-1)
-    }
   }
 }
 </script>
@@ -61,21 +58,6 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
-  }
-
-  .backButton {
-    display:inline-block;
-    padding:0.3em 1.2em;
-    margin:0 0.3em 0.3em 0;
-    border-radius:2em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    background-color:#9fabd4;
-    text-align:center;
-    transition: all 0.2s;
   }
 
 .project__location {

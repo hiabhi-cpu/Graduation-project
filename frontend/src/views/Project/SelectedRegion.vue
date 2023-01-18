@@ -1,6 +1,6 @@
 <template>
     <div class="project">
-      <button class="backButton" @click="back">Tillbaka</button>
+      <BackButton>Tillbaka</BackButton>
       <div class="project__region" v-if="region">
         <h2>{{ region.name }}</h2>
         <img v-bind:src="'data:image/gif;base64,'+ region.image" />
@@ -19,12 +19,14 @@
 
 <script>
   import Tag from '../../components/Tag.vue'
+  import BackButton from '../../components/BackButton.vue'
 
 
 export default {
   props: ['regionid'],
   components: {
     Tag,
+    BackButton,
   },
   data() {
     return {
@@ -41,11 +43,6 @@ export default {
     .then(res => res.json())
     .then(data => this.locations = data)
     .then(err => console.log(err.message))
-  },
-  methods: {
-    back() {
-        this.$router.go(-1)
-    }
   }
 }
 </script>
