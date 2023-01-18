@@ -46,6 +46,10 @@ export default {
     color: black;
   }
 
+  .project__link:hover {
+    color: #9fabd4;
+  }
+
   .project__textBox {
     text-align: center;
     width: 40%;

@@ -1,6 +1,6 @@
 <template>
     <div class="project">
-      <div v-if="region">
+      <div class="project__region" v-if="region">
         <h2>{{ region.name }}</h2>
         <img v-bind:src="'data:image/gif;base64,'+ region.image" />
         <p>{{ region.text }}</p>
@@ -42,12 +42,25 @@ export default {
 <style scoped>
 
 
-  .projekt {
+  .project {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
-    width: 20%;
+  }
+
+  .project__regionText {
+    width: 40%;
+  }
+
+  .project__region {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 40%;
+    border-bottom: #9fabd4 solid 1px;
+    text-align: left;
   }
 
   .location {
@@ -55,6 +68,8 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
+    width: 10%;
+    border-bottom: #9fabd4 solid 1px;
   }
 
   .project__locationLink {
@@ -65,7 +80,7 @@ export default {
 
   .project__locationLink:hover {
     text-decoration: underline;
-    transform: scale(1.1, 1.1);
+    transform: scale(1.05, 1.05);
   }
 
 </style>
