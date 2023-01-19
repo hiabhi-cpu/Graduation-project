@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import org.apache.tomcat.util.descriptor.LocalResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -56,6 +55,19 @@ public class LocationServiceImpl implements LocationService {
             location.setTag(tagRepository.findById(tagId).get());
 
             return locationRepository.save(location);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
+    }
+
+    @Override
+    public List<Location> searchLocation(String keyword) {
+        return locationRepository.findByTextContainingIgnoreCase(keyword);
+    }
+
+    @Override
+    public List<Location> getAllLocationsBasedOnTag(Long id) {
+        if(tagRepository.findById(id).isPresent()) {
+            return (List<Location>)locationRepository.findAllByTag(tagRepository.findById(id).get());
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
