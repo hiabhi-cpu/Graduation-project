@@ -9,4 +9,6 @@ import com.example.demo.entity.Region;
 
 public interface LocationRepository extends CrudRepository<Location, Long> {
     List <Location> findAllByRegion(Region region);
+
+    public List<Location> findByTextContainingIgnoreCase(String keyword);
 }

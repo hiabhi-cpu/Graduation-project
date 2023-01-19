@@ -30,6 +30,11 @@ public class LocationController {
         return new ResponseEntity<>(locationService.getAllLocations(), HttpStatus.OK);
     }
 
+    @GetMapping("/location/search")
+    public ResponseEntity <List<Location>> searchLocations(@RequestParam("keyword") String keyword) {
+        return new ResponseEntity<>(locationService.searchLocation(keyword), HttpStatus.OK);
+    }
+
     @GetMapping("/locationbyregion/{id}")
     public ResponseEntity <List<Location>> getAllLocationsFromRegion(@PathVariable Long id) {
         return new ResponseEntity<>(locationService.getAllLocationsBasedOnRegion(id), HttpStatus.OK);

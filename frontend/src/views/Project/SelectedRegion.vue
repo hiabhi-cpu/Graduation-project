@@ -22,29 +22,29 @@
   import BackButton from '../../components/BackButton.vue'
 
 
-export default {
-  props: ['regionid'],
-  components: {
-    Tag,
-    BackButton,
-  },
-  data() {
-    return {
-      region: null,
-      locations: []
+  export default {
+    props: ['regionid'],
+    components: {
+      Tag,
+      BackButton,
+    },
+    data() {
+      return {
+        region: null,
+        locations: []
+      }
+    },
+    mounted() {
+      fetch('http://localhost:8080/region/' + this.regionid)
+      .then(res => res.json())
+      .then(data => this.region = data)
+      .then(err => console.log(err.message))
+      fetch('http://localhost:8080/locationbyregion/' + this.regionid)
+      .then(res => res.json())
+      .then(data => this.locations = data)
+      .then(err => console.log(err.message))
     }
-  },
-  mounted() {
-    fetch('http://localhost:8080/region/' + this.regionid)
-    .then(res => res.json())
-    .then(data => this.region = data)
-    .then(err => console.log(err.message))
-    fetch('http://localhost:8080/locationbyregion/' + this.regionid)
-    .then(res => res.json())
-    .then(data => this.locations = data)
-    .then(err => console.log(err.message))
   }
-}
 </script>
 
 
