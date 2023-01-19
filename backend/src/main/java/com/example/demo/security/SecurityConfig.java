@@ -43,7 +43,6 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.GET, "/location/**").permitAll()
             .requestMatchers(HttpMethod.GET, "/region/**").permitAll()
             .requestMatchers(HttpMethod.POST, "/region").permitAll()
-            .requestMatchers(HttpMethod.GET, "/locationbyregion/**").permitAll()
             .requestMatchers(HttpMethod.GET, "/tag").permitAll()
             .anyRequest().authenticated()
             .and()

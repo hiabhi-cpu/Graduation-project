@@ -63,5 +63,13 @@ public class LocationServiceImpl implements LocationService {
     public List<Location> searchLocation(String keyword) {
         return locationRepository.findByTextContainingIgnoreCase(keyword);
     }
+
+    @Override
+    public List<Location> getAllLocationsBasedOnTag(Long id) {
+        if(tagRepository.findById(id).isPresent()) {
+            return (List<Location>)locationRepository.findAllByTag(tagRepository.findById(id).get());
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
+    }
     
 }

@@ -39,7 +39,7 @@
       .then(res => res.json())
       .then(data => this.region = data)
       .then(err => console.log(err.message))
-      fetch('http://localhost:8080/locationbyregion/' + this.regionid)
+      fetch('http://localhost:8080/location/byregion/' + this.regionid)
       .then(res => res.json())
       .then(data => this.locations = data)
       .then(err => console.log(err.message))

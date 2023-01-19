@@ -35,7 +35,12 @@ public class LocationController {
         return new ResponseEntity<>(locationService.searchLocation(keyword), HttpStatus.OK);
     }
 
-    @GetMapping("/locationbyregion/{id}")
+    @GetMapping("/location/bytag/{id}")
+    public ResponseEntity <List<Location>> getAllLocationsFromTag(@PathVariable Long id) {
+        return new ResponseEntity<>(locationService.getAllLocationsBasedOnTag(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/location/byregion/{id}")
     public ResponseEntity <List<Location>> getAllLocationsFromRegion(@PathVariable Long id) {
         return new ResponseEntity<>(locationService.getAllLocationsBasedOnRegion(id), HttpStatus.OK);
     }

@@ -10,4 +10,5 @@ public interface LocationService {
     List<Location> getAllLocationsBasedOnRegion(Long id);
     Location createNewLocation(String name, String text, Long id, Long tagId);
     List<Location> searchLocation(String keyword);
+    List<Location> getAllLocationsBasedOnTag(Long id);
 }
