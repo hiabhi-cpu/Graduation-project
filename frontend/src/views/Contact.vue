@@ -39,7 +39,6 @@
  .contact__fiftyFiftyContainer__innerContainer {
     display: flex;
     align-items: center;
-    background-color: whitesmoke;
  }
 
  .contact__fiftyFiftyContainer__innerContainer__column {
