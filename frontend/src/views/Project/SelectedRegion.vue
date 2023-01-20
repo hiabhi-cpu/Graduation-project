@@ -50,7 +50,12 @@
 
 <style scoped>
 
-  
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
   .project__regionText {
     width: 40%;
   }
@@ -64,6 +69,10 @@
     border-bottom: #9fabd4 solid 1px;
     text-align: left;
   }
+
+  img {
+    max-width: 400px;
+}
 
   .location {
     display: flex;

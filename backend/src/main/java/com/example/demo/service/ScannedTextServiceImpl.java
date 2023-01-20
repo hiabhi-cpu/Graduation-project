@@ -1,13 +1,11 @@
 package com.example.demo.service;
 
 import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -24,40 +22,59 @@ public class ScannedTextServiceImpl implements ScannedTextService {
     @Autowired
     LocationRepository locationRepository; 
 
+    @Autowired
+    ImageUtilityService imageUtilityService;
+
     @Override
     public ScannedText getScannedText(Long id) {
         if(scannedTextRepository.findById(id).isPresent()) {
-            return scannedTextRepository.findById(id).get();
+            ScannedText answer = scannedTextRepository.findById(id).get();
+            answer.setImageData(imageUtilityService.deCompressImage(answer.getImageData()));
+            return answer;
+
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
 
     @Override
     public List<ScannedText> getAllScannedTexts() {
-        return (List<ScannedText>)scannedTextRepository.findAll();
+        List<ScannedText> copy = List.copyOf((List<ScannedText>)scannedTextRepository.findAll());
+        for(ScannedText image : copy) {
+            image.setImageData(imageUtilityService.deCompressImage(image.getImageData()));
+        }
+
+        return (List<ScannedText>)copy;
     }
 
     @Override
     public ScannedText createNewScannedText(String text, String source, Long id, MultipartFile file) {
         if(locationRepository.findById(id).isPresent()) {
-            Location location = locationRepository.findById(id).get();
-            ScannedText scannedText = new ScannedText();
-            String filename = StringUtils.cleanPath(file.getOriginalFilename());
-                if(filename.contains("..")) {
-                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
-                }
-                try {
-                    scannedText.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                scannedText.setText(text);
-                scannedText.setSource(source);
-                scannedText.setLocation(location);
-                location.setScannedTexts(scannedText);
-                locationRepository.save(location);
-                return scannedTextRepository.save(scannedText);
+        Location location = locationRepository.findById(id).get();
+        ScannedText image = new ScannedText();
+            try {
+                image.setImageData(imageUtilityService.compressImage(file.getBytes()));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
-    }
+            image.setText(text);
+            image.setSource(source);
+            image.setLocation(location);
+            location.setScannedTexts(image);
+            locationRepository.save(location);
+            
+            return scannedTextRepository.save(image);
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    }  
+
+
+
+
+
+
+
+
+
+
+
 }

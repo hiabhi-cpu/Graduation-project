@@ -17,8 +17,8 @@ public class ScannedText {
     private Long id; 
 
     @Lob
-	@Column(name = "image", columnDefinition="BLOB")
-    private String image; 
+	@Column(name = "imageData", columnDefinition="MEDIUMBLOB", length = 1000)
+    private byte[] imageData; 
 
     private String text;
 
@@ -31,15 +31,15 @@ public class ScannedText {
     public ScannedText() {
     }
 
-    public ScannedText(String image, String text, String source) {
-        this.image = image;
+    public ScannedText(byte[] imageData, String text, String source) {
+        this.imageData = imageData;
         this.text = text;
         this.source = source;
     }
 
-    public ScannedText(Long id, String image, String text, String source) {
+    public ScannedText(Long id, byte[] imageData, String text, String source) {
         this.id = id;
-        this.image = image;
+        this.imageData = imageData;
         this.text = text;
         this.source = source;
     }
@@ -52,12 +52,12 @@ public class ScannedText {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
+    public byte[] getImageData() {
+        return imageData;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 
     public String getText() {

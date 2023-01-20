@@ -20,7 +20,7 @@ public class Region {
     private String text; 
 
     @Lob
-	@Column(name = "image", columnDefinition="BLOB")
+    @Column(name = "imageData", columnDefinition="MEDIUMBLOB", length = 1000)
     private byte[] imageData; 
 
     public Region() {

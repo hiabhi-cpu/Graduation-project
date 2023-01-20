@@ -9,7 +9,7 @@
         <h4>Bilder</h4>
         <div class="location__imageContainer">
             <div v-for="image in location.images" v-bind:key="image.id" class="location__imageContainer__image">
-            <img v-bind:src="'data:image/gif;base64,'+ image.image" />
+            <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
             <p class="location__imageContainer__text">{{ image.text }}</p>
             <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
         </div>
@@ -17,7 +17,7 @@
         <h4>Skannad text</h4>
         <div class="location__imageContainer">
             <div v-for="image in location.scannedTexts" v-bind:key="image.id" class="location__imageContainer__image">
-            <img v-bind:src="'data:image/gif;base64,'+ image.image" />
+            <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
             <p class="location__imageContainer__text">{{ image.text }}</p>
             <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
         </div>
@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .project {
     display: flex;
@@ -75,6 +75,10 @@ export default {
     flex-direction: column;
     min-width: 31%;
     float: left;
+}
+
+img {
+    max-width: 400px;
 }
 
 .location__imageContainer__text {

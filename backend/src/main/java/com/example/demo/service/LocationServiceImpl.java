@@ -1,13 +1,16 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.entity.Image;
 import com.example.demo.entity.Location;
+import com.example.demo.entity.ScannedText;
 import com.example.demo.repository.LocationRepository;
 import com.example.demo.repository.RegionRepository;
 import com.example.demo.repository.TagRepository;
@@ -24,17 +27,46 @@ public class LocationServiceImpl implements LocationService {
     @Autowired
     TagRepository tagRepository;
 
+    @Autowired
+    ImageUtilityService imageUtilityService;
+
     @Override
     public Location getLocation(Long id) {
         if(locationRepository.findById(id).isPresent()) {
-            return locationRepository.findById(id).get();
+            Location answer = locationRepository.findById(id).get();
+            Set<Image> images = answer.getImages();
+            for(Image image : images) {
+                image.setImageData(imageUtilityService.deCompressImage(image.getImageData()));
+            }
+            Set<ScannedText> scannedtexts = answer.getScannedTexts();
+            for(ScannedText scannedtext : scannedtexts) {
+                scannedtext.setImageData(imageUtilityService.deCompressImage(scannedtext.getImageData()));
+            }
+
+            answer.setImages(images);
+            answer.setScannedTexts(scannedtexts);
+            return answer;
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
 
     @Override
     public List<Location> getAllLocations() {
-        return (List<Location>)locationRepository.findAll();
+        List<Location> copy = List.copyOf((List<Location>)locationRepository.findAll());
+        for(Location location : copy) {
+            Set<Image> images = location.getImages();
+            Set<ScannedText> scannedTexts = location.getScannedTexts();
+            for(Image image : images) {
+                image.setImageData(imageUtilityService.deCompressImage(image.getImageData()));
+            }
+            for(ScannedText scannedText : scannedTexts) {
+                scannedText.setImageData(imageUtilityService.deCompressImage(scannedText.getImageData()));
+            }
+            location.setImages(images);
+            location.setScannedTexts(scannedTexts);
+        }
+
+        return (List<Location>)copy;
     }
 
     @Override
