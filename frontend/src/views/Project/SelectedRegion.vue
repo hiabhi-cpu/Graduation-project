@@ -6,15 +6,18 @@
         <img v-bind:src="'data:image/png;base64,'+ region.imageData" />
         <p>{{ region.text }}</p>
       </div>
-      <h4>Platser och sevärdheter</h4>
-      <div v-for="location in locations" :key="location.id" class="location">
+      <h3>Platser och sevärdheter</h3>
+      <div class="region__container">
+      <div v-for="location in locations" :key="location.id">
+        <div class="location__item">
         <router-link class="project__locationLink" :to="{ name: 'SelectedLocation', params: { locationid: location.id }}">
           <h4 class="project__locationLink">{{ location.name }}  </h4>
         </router-link>
-        <Tag :style="{'background-color':location.tag.color}" :tagname="location.tag.name"></Tag> 
+        <Tag :style="{'background-color':location.tag.color}" :tagname="location.tag.name" class="importedTag"></Tag> 
+      </div>
       </div>
     </div>
-
+    </div>
 </template>
 
 <script>
@@ -55,6 +58,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
+    justify-content: center;
   }
   .project__regionText {
     width: 40%;
@@ -70,24 +74,27 @@
     text-align: left;
   }
 
-  img {
-    max-width: 400px;
+img {
+  max-height: 400px;
 }
 
-  .location {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-    width: 10%;
-    border-bottom: #9fabd4 solid 1px;
-  }
+.region__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: auto;
+  justify-content: center;
+}
+
+.location__item {
+  width: 200px;
+  padding: 20px;
+}
 
   .project__locationLink {
     text-decoration: none;
     color: black;
   }
-
 
   .project__locationLink:hover {
     text-decoration: underline;

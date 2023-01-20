@@ -26,7 +26,7 @@ public class Region {
     public Region() {
     }
 
-    public Region(Long id, String name, String text, byte[] image) {
+    public Region(Long id, String name, String text, byte[] imageData) {
         this.id = id;
         this.name = name;
         this.text = text;

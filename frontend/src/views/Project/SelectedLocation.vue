@@ -1,29 +1,30 @@
 <template>
     <div class="project">
         <BackButton>Tillbaka</BackButton>
-        <div v-if="location" class="project__location">
-        <h1> {{ location.name }}</h1>
-        <p>{{ location.text }}</p>
-        <Tag :style="{'background-color':location.tag.color}" :tagname="location.tag.name"></Tag> 
-        
+        <div v-if="location">
+            <div class="location_topContainer">
+            <h1> {{ location.name }}</h1>
+            <p>{{ location.text }}</p>
+            <Tag :style="{'background-color':location.tag.color}" :tagname="location.tag.name"></Tag>
+        </div> 
         <h4>Bilder</h4>
-        <div class="location__imageContainer">
-            <div v-for="image in location.images" v-bind:key="image.id" class="location__imageContainer__image">
-            <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
-            <p class="location__imageContainer__text">{{ image.text }}</p>
-            <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
-        </div>
-        </div>
+        <div class="location__container">
+            <div v-for="image in location.images" v-bind:key="image.id" >
+                <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
+                <p class="location__imageContainer__text">{{ image.text }}</p>
+                <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+            </div>
+         </div>
         <h4>Skannad text</h4>
-        <div class="location__imageContainer">
-            <div v-for="image in location.scannedTexts" v-bind:key="image.id" class="location__imageContainer__image">
-            <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
-            <p class="location__imageContainer__text">{{ image.text }}</p>
-            <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+        <div class="location__container">
+            <div v-for="image in location.scannedTexts" v-bind:key="image.id">
+                <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
+                 <p class="location__imageContainer__text">{{ image.text }}</p>
+                <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+            </div>
         </div>
-        </div>
-        </div>
-      </div>
+    </div>
+    </div>
 </template>
 
 <script>
@@ -61,25 +62,32 @@ export default {
   }
 
 .project__location {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
     margin-bottom: 1rem;
     width: 80%;
     text-align: left;
 }
 
-.location__imageContainer__image {
+.location__container {
     display: flex;
-    flex-direction: column;
-    min-width: 31%;
-    float: left;
+    gap: 1em;
 }
 
-img {
-    max-width: 400px;
+.location__container > * {
+    flex-basis: 100%;
 }
+
+img{
+    max-width: 100%;
+    width: 240px;
+}
+
+.location__container__item {
+    width: 300px;
+    height: 320px;
+    padding: 15px;
+}
+
 
 .location__imageContainer__text {
     font-size: 12px;
