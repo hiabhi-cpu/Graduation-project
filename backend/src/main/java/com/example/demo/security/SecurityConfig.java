@@ -44,6 +44,8 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.GET, "/region/**").permitAll()
             .requestMatchers(HttpMethod.POST, "/region").permitAll()
             .requestMatchers(HttpMethod.GET, "/tag").permitAll()
+            .requestMatchers(HttpMethod.GET, "/image").permitAll()
+            .requestMatchers(HttpMethod.GET, "/image/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)

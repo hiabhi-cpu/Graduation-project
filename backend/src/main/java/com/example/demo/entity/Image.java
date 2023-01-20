@@ -17,8 +17,8 @@ public class Image {
     private Long id; 
 
     @Lob
-	@Column(name = "image", columnDefinition="BLOB")
-    private String image; 
+	@Column(name = "imageData", columnDefinition="MEDIUMBLOB", length = 1000)
+    private byte[] imageData; 
 
     private String text;
 
@@ -31,14 +31,14 @@ public class Image {
     public Image() {
     }
 
-    public Image(String image, String text) {
-        this.image = image;
+    public Image(byte[] imageData, String text) {
+        this.imageData = imageData;
         this.text = text;
     }
     
-    public Image(Long id, String image, String text) {
+    public Image(Long id, byte[] imageData, String text) {
         this.id = id;
-        this.image = image;
+        this.imageData = imageData;
         this.text = text;
     }
 
@@ -50,12 +50,12 @@ public class Image {
         this.id = id;
     }
 
-    public String getImage() {
-        return image;
+    public byte[] getImageData() {
+        return imageData;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 
     public String getText() {
@@ -81,6 +81,8 @@ public class Image {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    
 
     
 }

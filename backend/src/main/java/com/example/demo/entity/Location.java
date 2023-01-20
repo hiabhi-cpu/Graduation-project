@@ -2,8 +2,6 @@ package com.example.demo.entity;
 
 import java.util.Set;
 
-import jakarta.annotation.Nonnull;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

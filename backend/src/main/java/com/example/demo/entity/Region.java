@@ -20,17 +20,17 @@ public class Region {
     private String text; 
 
     @Lob
-	@Column(name = "image", columnDefinition="BLOB")
-    private String image; 
+    @Column(name = "imageData", columnDefinition="MEDIUMBLOB", length = 1000)
+    private byte[] imageData; 
 
     public Region() {
     }
 
-    public Region(Long id, String name, String text, String image) {
+    public Region(Long id, String name, String text, byte[] imageData) {
         this.id = id;
         this.name = name;
         this.text = text;
-        this.image = image;
+        this.imageData = imageData;
     }
 
     public Long getId() {
@@ -58,11 +58,12 @@ public class Region {
         this.text = text;
     }
 
-    public String getImage() {
-        return image;
+    public byte[] getImageData() {
+        return imageData;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
+
 }
