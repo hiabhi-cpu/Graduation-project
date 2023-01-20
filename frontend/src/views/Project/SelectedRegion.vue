@@ -3,7 +3,7 @@
       <BackButton>Tillbaka</BackButton>
       <div class="project__region" v-if="region">
         <h2>{{ region.name }}</h2>
-        <img v-bind:src="'data:image/gif;base64,'+ region.image" />
+        <img v-bind:src="'data:image/png;base64,'+ region.imageData" />
         <p>{{ region.text }}</p>
       </div>
       <h4>Platser och sevärdheter</h4>
