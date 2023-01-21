@@ -56,7 +56,7 @@ export default {
   }
 
   .project__textBox__text {
-    text-align: left;
+    text-align: center;
   }
 
   .project__regionlink {
@@ -68,7 +68,6 @@ export default {
     text-decoration: underline;
     transform: scale(1.1, 1.1);
   }
-
 </style>
 
 

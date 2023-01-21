@@ -5,10 +5,10 @@
     </div>
       <div class="contact__topContainer">
         <h3>Kontakt</h3>
-        <h5 class="contact__fiftyFiftyContainer__text">
+        <p>
         Har du frågor eller funderingar gällande projektet så är det bara att kontakta mig på min 
-          <a href="mailto:tobjorn@persbergsbygdenshistoria.se">email</a>
-      </h5>
+          <a href="mailto:tobjorn@persbergsbygdenshistoria.se">email</a> eller genom formuläret nedan.
+      </p>
       </div>
       <form >
         <label>Namn</label>
@@ -47,7 +47,7 @@ img {
 
 .contact__topContainer {
   text-align: center;
-  width: 60%;
+  width: 460px;
 }
 
 form {

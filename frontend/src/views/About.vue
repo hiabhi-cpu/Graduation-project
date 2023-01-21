@@ -69,7 +69,7 @@
  }
 
  .about__textContainer__text {
-    text-align: left;
+    text-align: justify;
  }
 
  .line {
@@ -95,6 +95,7 @@
 
  .about__fiftyFiftyContainer__text {
     padding: 25px;
+    text-align: justify;
  }
 
 </style>

@@ -47,5 +47,8 @@
     background-color: #9fabd4;
     opacity: 0.4;
  }
+ p {
+  text-align: justify;
+ }
 
 </style>
