@@ -19,7 +19,9 @@
         <input type="email"/>
         <label>Kommentar</label>
         <textarea></textarea>
-        <button>Skicka</button>
+        <div class="button__container">
+          <button>Skicka</button>
+        </div>
       </form>
     </div>
   </template>
@@ -112,6 +114,12 @@ form input:hover {
 form input:active {
 	opacity:0.4;
   border: 2px solid green;
+}
+
+.button__container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: right;
 }
 
 form button {
