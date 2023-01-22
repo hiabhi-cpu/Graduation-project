@@ -38,7 +38,7 @@ export default {
     width: auto;
     height: auto;
     object-fit: contain;
-    z-index: 98;
+    padding: 50px;
 }
 
 .modal__image {
