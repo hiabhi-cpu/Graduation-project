@@ -11,7 +11,7 @@
         <div class="location__container">
             <div v-for="image in location.images" v-bind:key="image.id" >
                 <div class="location__item ">
-                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
+                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" v-on:click="openModal"/>
                     <p class="location__imageContainer__text">{{ image.text }}</p>
                     <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
                 </div>
@@ -21,30 +21,47 @@
         <div class="location__container">
             <div v-for="image in location.scannedTexts" v-bind:key="image.id">
                 <div class="location__item ">
-                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
+                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" v-on:click="openModal"/>
                     <p class="location__imageContainer__text">{{ image.text }}</p>
                     <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
                 </div>
             </div>
         </div>
+        <Modal
+            v-if="showModal"
+            @close="closeModal"
+            :image="imageData"
+            />
     </div>
     </div>
 </template>
 
 <script>
-
     import Tag from '../../components/Tag.vue'
     import BackButton from '../../components/BackButton.vue'
+    import Modal from '../../components/Modal.vue'
 
 export default {
   props: ['regionid', 'locationid'],
   components: {
     Tag,
     BackButton,
+    Modal
+  },
+  methods: {
+    closeModal() {
+        this.showModal = false
+    }, 
+    openModal(event) {
+        this.imageData = event.target.src; 
+        this.showModal = true
+    }
   },
   data() {
     return {
       location: null,
+      showModal: false,
+      imageData: ""
     }
   },
   mounted() {
