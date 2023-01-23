@@ -10,17 +10,21 @@
         <h4>Bilder</h4>
         <div class="location__container">
             <div v-for="image in location.images" v-bind:key="image.id" >
-                <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
-                <p class="location__imageContainer__text">{{ image.text }}</p>
-                <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+                <div class="location__item ">
+                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
+                    <p class="location__imageContainer__text">{{ image.text }}</p>
+                    <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+                </div>
             </div>
          </div>
         <h4>Skannad text</h4>
         <div class="location__container">
             <div v-for="image in location.scannedTexts" v-bind:key="image.id">
-                <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
-                 <p class="location__imageContainer__text">{{ image.text }}</p>
-                <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+                <div class="location__item ">
+                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" />
+                    <p class="location__imageContainer__text">{{ image.text }}</p>
+                    <p class="location__imageContainer__text"> Källa: {{ image.source }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -70,16 +74,19 @@ export default {
 
 .location__container {
     display: flex;
-    gap: 1em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: auto;
+    justify-content: center;
 }
 
-.location__container > * {
-    flex-basis: 100%;
+.location__item {
+  width: 400px;
+  padding: 20px;
 }
 
 img{
     max-width: 100%;
-    width: 240px;
 }
 
 .location__container__item {
@@ -92,6 +99,7 @@ img{
 .location__imageContainer__text {
     font-size: 12px;
     padding: none;
+    text-align: left;
 }
 
 </style>>

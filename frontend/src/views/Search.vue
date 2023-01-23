@@ -1,7 +1,7 @@
 <template>
     <div class="search">
       <h3>Sök</h3>
-      <p>Hitta platser och sevärdheter genom att antingen skriva in ett sökord eller klicka på en kategori</p>
+      <p>Hitta platser och sevärdheter klicka på en kategori eller genom att skriva in ett sökord. </p>
       <div class="search__tagContainer">
         <div v-for="tag in tags" :key="tag.id" class="tag" @click="handleTag(tag.id)">
           <Tag :style="{'background-color':tag.color}" :tagname="tag.name"></Tag> 
