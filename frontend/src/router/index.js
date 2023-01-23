@@ -7,6 +7,8 @@ import ProjectStart from '../views/project/ProjectStart.vue'
 import SelectedRegion from '../views/project/SelectedRegion.vue'
 import SelectedLocation from '../views/project/SelectedLocation.vue'
 import NotFound from '../views/NotFound.vue'
+import Login from '../views/admin/Login.vue'
+import AdminLandingPage from '../views/admin/AdminLandingPage.vue'
 
 const routes = [
   {
@@ -49,7 +51,18 @@ const routes = [
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound
+  },
+  {
+    path: '/secretlogin',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/admin',
+    name: 'AdminLandingPage',
+    component: AdminLandingPage
   }
+
 
 ]
 
