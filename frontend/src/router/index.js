@@ -9,6 +9,7 @@ import SelectedLocation from '../views/project/SelectedLocation.vue'
 import NotFound from '../views/NotFound.vue'
 import Login from '../views/admin/Login.vue'
 import AdminLandingPage from '../views/admin/AdminLandingPage.vue'
+import AdminNewLocation from '../views/admin/AdminNewLocation.vue'
 
 const routes = [
   {
@@ -61,6 +62,11 @@ const routes = [
     path: '/admin',
     name: 'AdminLandingPage',
     component: AdminLandingPage
+  },
+  {
+    path: '/admin/newLocation',
+    name: 'AdminNewLocation',
+    component: AdminNewLocation
   }
 
 
