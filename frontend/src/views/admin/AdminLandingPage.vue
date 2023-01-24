@@ -3,6 +3,9 @@
     <div class="admin">
     <h2>Välkommen tillbaka</h2>
     <h3>
+        <a href="http://localhost:8081/admin/newregion" class="admin__link">Skapa nytt område</a>
+    </h3>
+    <h3>
         <a href="http://localhost:8081/admin/newlocation" class="admin__link">Skapa ny plats</a>
     </h3>
     <h3>Redigera plats utifrån område</h3>
