@@ -1,9 +1,9 @@
 <template>
     <div class="AdminNewLocation">
-      <h3>Skapa ny plats</h3>
+      <h2>Skapa ny plats</h2>
       <div class="admin__regionContainer">
         <div v-for="region in regions" :key="region.id" class="tag" @click="handleRegion(region.id)">
-          <h4 class="admin__region" :class="{active: selectedRegion == region.id}" >{{ region.name }}</h4>
+          <h3 class="admin__region" :class="{activeRegion: selectedRegion == region.id}" >{{ region.name }}</h3>
       </div>
       </div>
       <form @submit.prevent="createNewLocation" class="location__form">
@@ -12,7 +12,9 @@
 
       <div class="admin__tagContainer">
         <div v-for="tag in tags" :key="tag.id" class="tag" @click="handleTag(tag.id)">
+            <div :class="{activeTag: selectedTag == tag.id}">
           <Tag :style="{'background-color':tag.color}" :tagname="tag.name" ></Tag> 
+        </div>
       </div>
       </div>
       <button type="submit">Skapa ny plats</button>
@@ -83,15 +85,21 @@
   }
 
   .location__form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     }
 
-   .active {
+   .activeRegion {
     color: green;
     text-decoration: underline;
+    text-shadow: 0px 0px 1px green;
+    transform: scale(1.2,1.2);
    }
+
+   .activeTag {
+    transform: scale(1.25,1.25);
+    }
 
   .admin__regionContainer {
     width: 80%;
@@ -107,9 +115,8 @@
     width: 80%;
     display: flex;
     justify-content: center;
+    padding: 15px;
   }
-
-
 
 
   .tag:hover {
@@ -131,6 +138,22 @@
 .searchResult {
   text-decoration: none;
   color: black;
+}
+
+form button {
+  width: 80px;
+  padding: 5px;
+  border: black solid 1px;
+  background-color: whitesmoke;
+  color:black;
+  font-size:14px;
+  box-shadow: 4px 2px 2px lightgray;
+}
+
+form button:hover {
+  opacity:0.8;
+  background-color: green;
+  color:white; 
 }
 
 

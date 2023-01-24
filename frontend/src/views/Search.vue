@@ -4,7 +4,9 @@
       <p>Hitta platser och sevärdheter klicka på en kategori eller genom att skriva in ett sökord. </p>
       <div class="search__tagContainer">
         <div v-for="tag in tags" :key="tag.id" class="tag" @click="handleTag(tag.id)">
-          <Tag :style="{'background-color':tag.color}" :tagname="tag.name"></Tag> 
+          <div :class="{activeTag: selectedTag == tag.id}">
+            <Tag :style="{'background-color':tag.color}" :tagname="tag.name"></Tag> 
+        </div>
       </div>
       </div>
         <input type="text" @input="handleInput" placeholder="Sök på platser"/>
@@ -27,7 +29,8 @@
     data() {
       return {
         tags: [],
-        locations: []
+        locations: [],
+        selectedTag: ""
       }
     }, mounted() {
       fetch('http://localhost:8080/tag')
@@ -37,6 +40,7 @@
     },
     methods: {
       handleInput(event) {
+          this.selectedTag = "";
           const keyword = event.target.value;
           let url = new URL('http://localhost:8080/location/search');
           const params = { keyword: keyword };
@@ -47,6 +51,7 @@
           .then(err => console.log(err.message))
         },
         handleTag(event) {
+          this.selectedTag = event; 
           console.log(event)
           fetch('http://localhost:8080/location/bytag/' + event)
           .then(res => res.json())
@@ -70,6 +75,11 @@
     width: 80%;
     display: flex;
     justify-content: center;
+    padding: 5px
+  }
+
+  .activeTag {
+    transform: scale(1.25,1.25);
   }
 
   .tag:hover {
