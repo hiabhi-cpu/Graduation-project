@@ -33,10 +33,10 @@ public class Location {
     @JoinColumn(nullable = false)
     private Tag tag; 
 
-    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<Image> images;
 
-    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<ScannedText> scannedTexts;
 
     public Location(Long id, String name) {
@@ -51,7 +51,6 @@ public class Location {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;

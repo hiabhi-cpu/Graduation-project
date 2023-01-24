@@ -2,6 +2,7 @@
     <div class="AdminNewLocation">
         <Backbutton>Tillbaka</Backbutton>
       <h2>Skapa ny plats</h2>
+      <h4>Välj vilket område som platsen tillhör</h4>
       <div class="admin__regionContainer">
         <div v-for="region in regions" :key="region.id" class="tag" @click="handleRegion(region.id)">
           <h3 class="admin__region" :class="{activeRegion: selectedRegion == region.id}" >{{ region.name }}</h3>
@@ -10,7 +11,7 @@
       <form @submit.prevent="createNewLocation" class="location__form">
             <input v-model="name" placeholder="Namn"/>
             <textarea v-model="text" placeholder="Text"/>
-
+        <h4>Välj vilken kategori som platsen tillhör</h4>
       <div class="admin__tagContainer">
         <div v-for="tag in tags" :key="tag.id" class="tag" @click="handleTag(tag.id)">
             <div :class="{activeTag: selectedTag == tag.id}">
@@ -141,7 +142,7 @@ form textarea {
   }
 
   .admin__region {
-    padding: 25px;
+    padding: 0px 20px;
   }
 
   .admin__tagContainer {

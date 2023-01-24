@@ -2,7 +2,7 @@
     <div class="login__container">
         <form @submit.prevent="login" class="login__form">
             <input v-model="username" placeholder="Användarnamn"/>
-            <input v-model="password" placeholder="Lösenord"/>
+            <input v-model="password" type="password" placeholder="Lösenord"/>
             <button type="submit">Logga in</button>
         </form>
     </div>
