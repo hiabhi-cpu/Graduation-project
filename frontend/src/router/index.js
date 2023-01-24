@@ -10,6 +10,8 @@ import NotFound from '../views/NotFound.vue'
 import Login from '../views/admin/Login.vue'
 import AdminLandingPage from '../views/admin/AdminLandingPage.vue'
 import AdminNewLocation from '../views/admin/AdminNewLocation.vue'
+import AdminEditLocation from '../views/admin/AdminEditLocation.vue'
+import AdminChooseLocation from '../views/admin/AdminChooseLocation.vue'
 
 const routes = [
   {
@@ -67,7 +69,18 @@ const routes = [
     path: '/admin/newLocation',
     name: 'AdminNewLocation',
     component: AdminNewLocation
-  }
+  },
+  {
+    path: '/admin/chooselocation/:regionid',
+    name: 'AdminChooseLocation',
+    component: AdminChooseLocation,
+    props: true
+  }, {
+    path: '/admin/editLocation/:locationid',
+    name: 'AdminEditLocation',
+    component: AdminEditLocation,
+    props: true
+  },
 
 
 ]

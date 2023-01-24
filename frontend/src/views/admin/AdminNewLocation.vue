@@ -1,5 +1,6 @@
 <template>
     <div class="AdminNewLocation">
+        <Backbutton>Tillbaka</Backbutton>
       <h2>Skapa ny plats</h2>
       <div class="admin__regionContainer">
         <div v-for="region in regions" :key="region.id" class="tag" @click="handleRegion(region.id)">
@@ -8,7 +9,7 @@
       </div>
       <form @submit.prevent="createNewLocation" class="location__form">
             <input v-model="name" placeholder="Namn"/>
-            <input v-model="text" placeholder="Text"/>
+            <textarea v-model="text" placeholder="Text"/>
 
       <div class="admin__tagContainer">
         <div v-for="tag in tags" :key="tag.id" class="tag" @click="handleTag(tag.id)">
@@ -25,10 +26,12 @@
   <script>
     import axios from 'axios'
     import Tag from '../../components/Tag.vue'
+    import Backbutton from '../../components/BackButton.vue'
 
   export default {
     components: {
     Tag,
+    Backbutton,
     },
     data() {
       return {
@@ -68,7 +71,7 @@
                 }
                 }
             )
-            console.log(response);
+            this.$router.push('editLocation/' + response.data.id)
         }
     }
     
@@ -89,6 +92,36 @@
     flex-direction: column;
     align-items: center;
     }
+
+    form label {
+	font-size:14px;
+	color:black;
+	cursor:pointer;
+}
+
+form input {
+	margin:15px 0;
+	padding:15px 10px;
+	width:100%;
+	outline:none;
+	border:1px solid #bbb;
+	display:inline-block;
+	box-sizing:border-box;
+	transition:0.2s ease all;
+}
+
+form textarea {
+    margin:15px 0;
+	padding:15px 10px;
+	width:100%;
+	outline:none;
+	border:1px solid #bbb;
+	display:inline-block;
+	box-sizing:border-box;
+	transition:0.2s ease all;
+    font-size: 16px;
+    font-family: sans-serif;
+}
 
    .activeRegion {
     color: green;
@@ -141,8 +174,8 @@
 }
 
 form button {
-  width: 80px;
-  padding: 5px;
+  width: 120px;
+  padding: 10px;
   border: black solid 1px;
   background-color: whitesmoke;
   color:black;

@@ -12,7 +12,6 @@
         <router-link class="project__regionlink" :to="{ name: 'SelectedRegion', params: { regionid: region.id }}">
           <h4 class="project__regionlink">{{ region.name }}</h4>
         </router-link>
-
       </div>
     </div>
   </template>

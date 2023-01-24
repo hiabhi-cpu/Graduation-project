@@ -94,6 +94,7 @@ form textarea {
 	display:inline-block;
 	box-sizing:border-box;
 	transition:0.2s ease all;
+  font-family: sans-serif;
 }
 
 form textarea:hover {
