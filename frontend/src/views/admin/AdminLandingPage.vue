@@ -59,5 +59,6 @@ export default {
   .admin__link:hover {
     text-decoration: underline;
     transform: scale(1.1, 1.1);
+    color: #42b983;
   }
 </style>

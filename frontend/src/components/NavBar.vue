@@ -16,7 +16,7 @@
                         <router-link class="header__navigation__link" to="/admin">Hem</router-link> 
                         <router-link class="header__navigation__link" to="/admin/newregion">Skapa nytt område</router-link> 
                         <router-link class="header__navigation__link" to="/admin/newlocation">Skapa ny plats</router-link> 
-                        <button @click="logout">Logga ut</button>
+                        <span class="header__navigation__logout" @click="logout">Logga ut</span>
                     </div>
                 </nav>
         </header>
@@ -69,9 +69,24 @@ export default {
     margin: 22px;
 }
 
+.header__navigation__logout {
+    margin-left: 150px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.header__navigation__logout:hover {
+    cursor: pointer;
+    color: #42b983;
+}
+
 nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+
+nav a:hover {
+    color: #42b983;
 }
 
 nav a.router-link-exact-active {

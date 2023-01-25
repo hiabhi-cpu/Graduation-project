@@ -1,7 +1,7 @@
 <template>
     <div class="AdminNewRegion">
         <Backbutton>Tillbaka</Backbutton>
-      <h2>Skapa en ny region</h2>
+      <h2>Skapa ett nytt område</h2>
       <form @submit.prevent="createNewRegion" class="location__form">
             <input v-model="name" placeholder="Namn"/>
             <textarea v-model="text" placeholder="Text"/>
