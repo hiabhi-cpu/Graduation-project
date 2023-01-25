@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -66,5 +67,13 @@ public class ImageServiceImpl implements ImageService {
             return imageRepository.save(image);
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
-    }  
+    }
+
+    @Override
+    public void deleteImage(Long id) {
+        if(imageRepository.findById(id).isPresent()) {
+            imageRepository.deleteById(id);
+        }
+    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    }
 }

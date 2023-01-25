@@ -91,14 +91,15 @@ img {
   padding: 20px;
 }
 
-  .project__locationLink {
-    text-decoration: none;
-    color: black;
-  }
 
-  .project__locationLink:hover {
-    text-decoration: underline;
-    transform: scale(1.05, 1.05);
-  }
+.project__locationLink {
+  text-decoration: none;
+  color: black;
+}
+
+.project__locationLink:hover {
+  text-decoration: underline;
+  transform: scale(1.05, 1.05);
+}
 
 </style>

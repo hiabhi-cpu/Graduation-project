@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,12 @@ public class ImageController {
      @PostMapping("/image")
      public ResponseEntity<Image> createNewImage(@RequestParam("text") String text, @RequestParam("source") String source, @RequestParam("id") Long id, @RequestParam("file") MultipartFile file) {
         return new ResponseEntity<>(imageService.createNewImage(text, source, id, file), HttpStatus.CREATED);
+     }
+
+     @DeleteMapping("/image/{id}")
+     public ResponseEntity<HttpStatus> deleteImage(@PathVariable Long id) {
+        imageService.deleteImage(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
      }
     
 }
