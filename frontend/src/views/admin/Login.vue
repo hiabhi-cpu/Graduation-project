@@ -9,13 +9,17 @@
 </template>
 
 <script>
+    import { useStore } from '../../store/mainStore'
     import axios from 'axios';
+
+    
 
 export default {
     data: () => {
         return {
             username: "",
             password: "",
+            store: useStore(),
         };
     },
     methods: {
@@ -24,8 +28,10 @@ export default {
                 username: this.username,
                 password: this.password
             });
-            localStorage.setItem('token', response.headers.get("Authorization"));
-            this.$router.push('/admin');
+
+            if(response.status == 200) {
+                this.store.login(response.headers.get("Authorization"));
+            }
         }
     }
 }

@@ -5,15 +5,40 @@
                 <img class="logo" src="../assets/loggoTest.jpg"/>
             </div>
                 <nav class="header__navigation">
-                    <router-link class="header__navigation__link" to="/">Hem</router-link> 
-                    <router-link class="header__navigation__link" to="/project">Projekt</router-link> 
-                    <router-link class="header__navigation__link" to="/search">Sök</router-link> 
-                    <router-link class="header__navigation__link" to="/about">Om oss</router-link> 
-                    <router-link class="header__navigation__link" to="/contact">Kontakt</router-link> 
+                    <div v-if="!store.user">
+                        <router-link class="header__navigation__link" to="/">Hem</router-link> 
+                        <router-link class="header__navigation__link" to="/project">Projekt</router-link> 
+                        <router-link class="header__navigation__link" to="/search">Sök</router-link> 
+                        <router-link class="header__navigation__link" to="/about">Om oss</router-link> 
+                        <router-link class="header__navigation__link" to="/contact">Kontakt</router-link> 
+                    </div>
+                    <div v-if="store.user">
+                        <router-link class="header__navigation__link" to="/admin">Hem</router-link> 
+                        <router-link class="header__navigation__link" to="/admin/newregion">Skapa nytt område</router-link> 
+                        <router-link class="header__navigation__link" to="/admin/newlocation">Skapa ny plats</router-link> 
+                        <button @click="logout">Logga ut</button>
+                    </div>
                 </nav>
         </header>
     </div>
 </template>
+
+<script>
+    import { useStore } from '../store/mainStore';
+
+export default {
+   data: () => {
+        return {
+            store: useStore(),
+        };
+    },
+    methods: {
+        logout() {
+            this.store.logout();
+        }
+    }
+}
+</script>
 
 <style>
 
