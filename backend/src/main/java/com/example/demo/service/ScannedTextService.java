@@ -10,4 +10,5 @@ public interface ScannedTextService {
     ScannedText getScannedText(Long id);
     List<ScannedText> getAllScannedTexts();
     ScannedText createNewScannedText(String text, String source, Long id, MultipartFile file);
+    void deleteScannedText(Long id);
 }

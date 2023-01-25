@@ -67,6 +67,13 @@ public class ScannedTextServiceImpl implements ScannedTextService {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
     }  
 
+    @Override
+    public void deleteScannedText(Long id) {
+        if(scannedTextRepository.findById(id).isPresent()) {
+            scannedTextRepository.deleteById(id);
+        }
+    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    }
 
 
 
