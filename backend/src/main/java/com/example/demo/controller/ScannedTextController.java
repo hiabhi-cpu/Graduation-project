@@ -39,7 +39,7 @@ public class ScannedTextController {
      @DeleteMapping("/scannedtext/{id}")
      public ResponseEntity<HttpStatus> deleteScannedText(@PathVariable Long id) {
         scannedTextService.deleteScannedText(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
      }
     
 }

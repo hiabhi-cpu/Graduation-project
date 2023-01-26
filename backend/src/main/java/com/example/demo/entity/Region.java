@@ -17,6 +17,7 @@ public class Region {
 
     private String name;
 
+    @Column(length=90000)
     private String text; 
 
     @Lob

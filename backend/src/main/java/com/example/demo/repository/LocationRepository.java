@@ -11,6 +11,6 @@ import com.example.demo.entity.Tag;
 public interface LocationRepository extends CrudRepository<Location, Long> {
     List <Location> findAllByRegion(Region region);
     List <Location> findAllByTag(Tag tag);
-
-    public List<Location> findByTextContainingIgnoreCase(String keyword);
+    
+    public List<Location> findByTextContainingIgnoreCaseOrNameContainingIgnoreCase(String keyword1, String keyword2);
 }

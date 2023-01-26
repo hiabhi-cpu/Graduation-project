@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class Location {
 
     private String name;
 
+    @Column(length=90000)
     private String text; 
 
     public Location() {

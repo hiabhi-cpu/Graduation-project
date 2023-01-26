@@ -93,7 +93,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public List<Location> searchLocation(String keyword) {
-        return locationRepository.findByTextContainingIgnoreCase(keyword);
+        return locationRepository.findByTextContainingIgnoreCaseOrNameContainingIgnoreCase(keyword, keyword);
     }
 
     @Override

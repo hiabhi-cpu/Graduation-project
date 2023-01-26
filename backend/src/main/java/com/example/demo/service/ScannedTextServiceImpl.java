@@ -32,8 +32,9 @@ public class ScannedTextServiceImpl implements ScannedTextService {
             answer.setImageData(imageUtilityService.deCompressImage(answer.getImageData()));
             return answer;
 
+        } else {
+          throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
 
     @Override
@@ -63,16 +64,19 @@ public class ScannedTextServiceImpl implements ScannedTextService {
             locationRepository.save(location);
             
             return scannedTextRepository.save(image);
-        }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+        } 
     }  
 
     @Override
     public void deleteScannedText(Long id) {
         if(scannedTextRepository.findById(id).isPresent()) {
             scannedTextRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
         }
-    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    
     }
 
 
