@@ -34,12 +34,12 @@
          </div>
         <h4>Skannad text</h4>
         <div class="admin__container">
-            <div v-for="image in location.scannedTexts" v-bind:key="image.id">
+            <div v-for="scannedText in location.scannedTexts" v-bind:key="scannedText.id">
                 <div class="admin__item ">
-                    <img v-bind:src="'data:image/gif;base64,'+ image.imageData" v-on:click="openModal"/>
-                    <span class="admin__item__delete" v-on:click="deleteImage(image.id)">X</span>
-                    <p class="admin__imageContainer__text">{{ image.text }}</p>
-                    <p class="admin__imageContainer__text"> Källa: {{ image.source }}</p>
+                    <img v-bind:src="'data:image/gif;base64,'+ scannedText.imageData" v-on:click="openModal"/>
+                    <span class="admin__item__delete" v-on:click="deleteScannedText(scannedText.id)">X</span>
+                    <p class="admin__imageContainer__text">{{ scannedText.text }}</p>
+                    <p class="admin__imageContainer__text"> Källa: {{ scannedText.source }}</p>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@ export default {
         formData.append('id', parseInt(this.location.id));
         formData.append('source', this.source);
         formData.append('file', this.image);
-        const response = await axios.post('http://localhost:8080/' + this.selectedType, formData, {
+        await axios.post('http://localhost:8080/' + this.selectedType, formData, {
             headers: {
                 'content-type': 'multipart/form-data',
                 Authorization: localStorage.getItem('token')
@@ -94,16 +94,26 @@ export default {
         this.$router.go()
     },
     async deleteImage(event) {
-        const response = await axios.delete('http://localhost:8080/image/' + event, {
+        await axios.delete('http://localhost:8080/image/' + event, {
             headers: {
                 Authorization: localStorage.getItem('token')
             }
             }
         )
-        console.log(response);
+        this.$router.go();
+    },
+    async deleteScannedText(event) {
+        await axios.delete('http://localhost:8080/scannedtext/' + event, {
+            headers: {
+                Authorization: localStorage.getItem('token')
+            }
+            }
+        )
+        this.$router.go();   
     }
-  }
+  }, 
 }
+
 </script>
 
 <style scoped>

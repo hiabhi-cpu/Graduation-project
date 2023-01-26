@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,12 @@ public class ScannedTextController {
      @PostMapping("/scannedtext")
      public ResponseEntity<ScannedText> createNewScannedtext(@RequestParam("text") String text, @RequestParam("source") String source, @RequestParam("id") Long id, @RequestParam("file") MultipartFile file) {
         return new ResponseEntity<>(scannedTextService.createNewScannedText(text, source, id, file), HttpStatus.CREATED);
+     }
+
+     @DeleteMapping("/scannedtext/{id}")
+     public ResponseEntity<HttpStatus> deleteScannedText(@PathVariable Long id) {
+        scannedTextService.deleteScannedText(id);
+        return new ResponseEntity<>(HttpStatus.OK);
      }
     
 }
