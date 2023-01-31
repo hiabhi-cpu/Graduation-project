@@ -39,7 +39,7 @@ const routes = [
   },
   {
     path: '/project',
-    name: 'project',
+    name: 'ProjectStart',
     component: ProjectStart
   },
   {
@@ -75,7 +75,7 @@ const routes = [
   },
   {
     path: '/admin/newRegion',
-    name: 'AdminNewRegion',
+    name: 'adminNewRegion',
     component: AdminNewRegion
   },
   {
