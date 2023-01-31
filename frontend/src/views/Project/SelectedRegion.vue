@@ -60,17 +60,12 @@
     margin-bottom: 2rem;
     justify-content: center;
   }
-  .project__regionText {
-    width: 40%;
-  }
 
   .project__region {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
     width: 40%;
-    border-bottom: #9fabd4 solid 1px;
     text-align: left;
   }
 

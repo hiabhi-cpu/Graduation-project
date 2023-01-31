@@ -1,10 +1,12 @@
 <template>
     <div class="project">
         <BackButton>Tillbaka</BackButton>
-        <div v-if="location">
-            <div class="location_topContainer">
+        <div class="project" v-if="location">
+            <div class="project__location">
             <h1> {{ location.name }}</h1>
-            <p>{{ location.text }}</p>
+            <div class="text__container">
+                <p>{{ location.text }}</p>
+            </div>
             <Tag :style="{'background-color':location.tag.color}" :tagname="location.tag.name"></Tag>
         </div> 
         <h4>Bilder</h4>
@@ -83,10 +85,15 @@ export default {
   }
 
 .project__location {
-    text-align: center;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 80%;
     text-align: left;
+}
+
+.text__container {
+    width: 40%;
 }
 
 .location__container {
