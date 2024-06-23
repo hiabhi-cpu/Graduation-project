@@ -11,4 +11,6 @@ public interface LocationService {
     Location createNewLocation(String name, String text, Long id, Long tagId);
     List<Location> searchLocation(String keyword);
     List<Location> getAllLocationsBasedOnTag(Long id);
+	void deleteLocation(Long id);
+	Location updateLocation(Long lid, String name, String text, Long id, Long tagId);
 }

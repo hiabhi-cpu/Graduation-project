@@ -103,5 +103,31 @@ public class LocationServiceImpl implements LocationService {
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
     }
+
+	@Override
+	public void deleteLocation(Long id) {
+		// TODO Auto-generated method stub
+		if(locationRepository.findById(id).isPresent()) {
+			locationRepository.deleteById(id);
+		}
+		else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+		}
+	}
+
+	@Override
+	public Location updateLocation(Long lid, String name, String text, Long id, Long tagId) {
+		// TODO Auto-generated method stub
+		if(locationRepository.findById(lid).isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+		}
+		Location location = locationRepository.findById(lid).get();
+        location.setName(name);
+        location.setText(text);
+        location.setRegion(regionRepository.findById(id).get());
+        location.setTag(tagRepository.findById(tagId).get());
+
+        return locationRepository.save(location);
+	}
     
 }

@@ -34,5 +34,28 @@ public class TagServiceImpl implements TagService {
         Tag tag = new Tag(name, color);
         return tagRepository.save(tag);
     }
+
+	@Override
+	public void deletTag(Long id) {
+		if(tagRepository.findById(id).isPresent()) {
+			tagRepository.deleteById(id);
+		}
+		else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+		}
+		
+	}
+
+	@Override
+	public Tag updateTag(Long id, String name, String color) {
+		// TODO Auto-generated method stub
+		if(tagRepository.findById(id).isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+		}
+		Tag tag=tagRepository.findById(id).get();
+		tag.setName(name);
+		tag.setColor(color);
+		return tagRepository.save(tag);
+	}
  
 }

@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,5 +50,17 @@ public class LocationController {
      @PostMapping("/location")
      public ResponseEntity<Location> saveLocation(@RequestParam("name") String name, @RequestParam("text") String text, @RequestParam("id") Long id, @RequestParam("tagId") Long tagId) {
         return new ResponseEntity<>(locationService.createNewLocation(name, text, id, tagId), HttpStatus.CREATED);
+     }
+     
+     @DeleteMapping("/location/{id}")
+     public ResponseEntity<HttpStatus> deleteLocation(@PathVariable("id") Long id){
+    	 locationService.deleteLocation(id);
+    	 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+     }
+     
+     
+     @PutMapping("/location/{id}")
+     public ResponseEntity<Location> updateLocation(@RequestParam("name") String name, @RequestParam("text") String text, @RequestParam("id") Long id, @RequestParam("tagId") Long tagId,@PathVariable("id")Long lid) {
+        return new ResponseEntity<>(locationService.updateLocation(lid,name, text, id, tagId), HttpStatus.OK);
      }
 }

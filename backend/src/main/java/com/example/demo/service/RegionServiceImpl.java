@@ -52,6 +52,37 @@ public class RegionServiceImpl implements RegionService {
             e.printStackTrace();
         }
         return regionRepository.save(region);
-    }  
+    }
+
+	@Override
+	public void deleteRegion(Long id) {
+		// TODO Auto-generated method stub
+		if(regionRepository.findById(id).isPresent()) {
+			regionRepository.deleteById(id);
+		}
+		else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+		}
+	}
+
+	@Override
+	public Region updateRegion(Long id, String name, String text, MultipartFile file) {
+		// TODO Auto-generated method stub
+		
+		if(regionRepository.findById(id).isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+		}
+		Region region=regionRepository.findById(id).get();
+		region.setName(name);
+		region.setText(text);
+		try {
+			region.setImageData(imageUtilityService.compressImage(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return regionRepository.save(region);
+	}  
+    
+    
 }
 

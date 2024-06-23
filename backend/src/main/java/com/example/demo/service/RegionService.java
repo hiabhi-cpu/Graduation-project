@@ -10,4 +10,6 @@ public interface RegionService {
     Region getRegion(Long id);
     List<Region> getAllRegions();
     Region createNewRegion(String name, String text, MultipartFile file);
+	void deleteRegion(Long id);
+	Region updateRegion(Long id, String name, String text, MultipartFile file);
 }
